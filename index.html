@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b5f8a">
+  <title>Nathalia & Samuel 💙</title>
+  <meta name="description" content="Uma surpresa feita com amor para Samuel.">
+  <style>
+    :root{
+      --ocean:#0b5f8a;
+      --deep:#062f49;
+      --sky:#dff5ff;
+      --ice:#f7fcff;
+      --white:#ffffff;
+      --text:#123247;
+      --muted:#5f7887;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(91,191,232,.18), transparent 30%),
+        radial-gradient(circle at 90% 30%, rgba(11,95,138,.14), transparent 28%),
+        linear-gradient(180deg,#eefaff 0%,#ffffff 45%,#eaf8ff 100%);
+      overflow-x:hidden;
+    }
+    button{font:inherit}
+    .opening{
+      position:fixed; inset:0; z-index:100;
+      display:grid; place-items:center;
+      background:linear-gradient(160deg,#031d2c,#0b5f8a);
+      transition:opacity .8s, visibility .8s;
+      padding:24px;
+    }
+    .opening.hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .opening-card{
+      width:min(440px,100%);
+      text-align:center;color:white;
+      padding:34px 24px;
+      border:1px solid rgba(255,255,255,.25);
+      border-radius:28px;
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(12px);
+      box-shadow:0 25px 70px rgba(0,0,0,.25);
+    }
+    .envelope{font-size:68px; animation:float 2.4s ease-in-out infinite}
+    @keyframes float{50%{transform:translateY(-10px)}}
+    h1,h2,p{margin-top:0}
+    .opening h1{font-size:34px;margin:12px 0 8px}
+    .opening p{opacity:.9;line-height:1.6}
+    .open-btn{
+      border:0;cursor:pointer;
+      background:white;color:var(--deep);
+      padding:14px 24px;border-radius:999px;
+      font-weight:bold;
+      box-shadow:0 10px 30px rgba(0,0,0,.18);
+    }
+    .page{max-width:900px;margin:auto}
+    .hero{
+      min-height:100vh;
+      display:grid;place-items:center;
+      padding:40px 18px 70px;
+      position:relative;
+    }
+    .hero-inner{text-align:center;width:min(760px,100%)}
+    .eyebrow{
+      letter-spacing:3px;text-transform:uppercase;
+      font-size:12px;color:var(--ocean);font-weight:bold;
+    }
+    .hero h1{
+      font-size:clamp(46px,10vw,92px);
+      line-height:.95;margin:12px 0;
+      color:var(--deep);
+      text-shadow:0 8px 30px rgba(11,95,138,.12);
+    }
+    .amp{color:var(--ocean);font-style:italic}
+    .hero-sub{font-size:20px;color:var(--muted);line-height:1.5}
+    .scroll{
+      display:inline-block;margin-top:24px;
+      color:var(--ocean);text-decoration:none;font-size:14px
+    }
+    .wave{
+      position:absolute;bottom:-1px;left:0;width:100%;height:90px;
+      background:var(--white);
+      clip-path:ellipse(70% 70% at 50% 100%);
+    }
+    section{padding:80px 18px}
+    .section-title{text-align:center;font-size:34px;color:var(--deep);margin-bottom:12px}
+    .section-lead{text-align:center;color:var(--muted);margin-bottom:32px}
+    .counter{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;
+      max-width:760px;margin:28px auto 0;
+    }
+    .unit{
+      background:rgba(255,255,255,.86);
+      border:1px solid rgba(11,95,138,.12);
+      border-radius:20px;padding:20px 10px;
+      box-shadow:0 12px 35px rgba(11,95,138,.08);
+    }
+    .number{font-size:34px;font-weight:bold;color:var(--ocean);display:block}
+    .label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+    .photo-card{
+      max-width:620px;margin:30px auto 0;
+      background:white;border-radius:28px;padding:10px;
+      box-shadow:0 22px 55px rgba(5,54,79,.16);
+      transform:rotate(-1deg);
+    }
+    .photo-card img{
+      width:100%;display:block;border-radius:20px;
+      max-height:780px;object-fit:cover;
+    }
+    .caption{text-align:center;padding:18px 10px 10px;font-style:italic;color:var(--muted)}
+    .letter{
+      max-width:720px;margin:auto;
+      background:rgba(255,255,255,.9);
+      border-radius:28px;padding:34px 28px;
+      box-shadow:0 20px 55px rgba(11,95,138,.1);
+      border:1px solid rgba(11,95,138,.1);
+    }
+    .letter p{font-size:20px;line-height:1.9}
+    .music{
+      max-width:650px;margin:auto;text-align:center;
+      padding:30px;border-radius:28px;
+      background:linear-gradient(145deg,#dff5ff,#fff);
+      border:1px solid rgba(11,95,138,.13);
+    }
+    .vinyl{
+      width:100px;height:100px;border-radius:50%;
+      margin:0 auto 20px;
+      background:repeating-radial-gradient(circle,#062f49 0 5px,#0b5f8a 6px 9px);
+      display:grid;place-items:center;
+      box-shadow:0 12px 30px rgba(6,47,73,.2);
+      animation:spin 8s linear infinite;
+      animation-play-state:paused;
+    }
+    .vinyl.playing{animation-play-state:running}
+    .vinyl:after{content:"";width:28px;height:28px;border-radius:50%;background:#dff5ff;border:6px solid #fff}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .music h3{font-size:25px;margin:0 0 8px}
+    .music small{color:var(--muted)}
+    .music-btn{
+      margin-top:20px;border:0;background:var(--ocean);color:white;
+      padding:13px 22px;border-radius:999px;cursor:pointer;font-weight:bold;
+    }
+    .final{
+      text-align:center;padding-bottom:120px;
+    }
+    .final .heart{font-size:50px;animation:float 2.5s infinite}
+    .final h2{font-size:42px;color:var(--deep)}
+    footer{text-align:center;padding:20px;color:#78909c;font-size:12px}
+    .hearts{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+    .heart-float{
+      position:absolute;bottom:-30px;opacity:0;
+      color:#54a8ce;animation:rise linear forwards;
+    }
+    @keyframes rise{
+      0%{transform:translateY(0) scale(.7);opacity:0}
+      10%{opacity:.5}
+      100%{transform:translateY(-110vh) translateX(80px) scale(1.4);opacity:0}
+    }
+    @media(max-width:620px){
+      .counter{grid-template-columns:repeat(2,1fr)}
+      .number{font-size:29px}
+      section{padding:65px 15px}
+      .letter{padding:28px 21px}
+      .letter p{font-size:18px}
+    }
+  </style>
+</head>
+<body>
+  <div class="opening" id="opening">
+    <div class="opening-card">
+      <div class="envelope">💌</div>
+      <h1>Uma surpresa para você, Samuel</h1>
+      <p>Eu fiz um cantinho na internet só para guardar um pedacinho da nossa história.</p>
+      <button class="open-btn" onclick="openSite()">Abrir minha surpresa 💙</button>
+    </div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <main class="page">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">uma história de dois</div>
+        <h1>Nathalia <span class="amp">&</span> Samuel</h1>
+        <p class="hero-sub">Um pequeno lugar para lembrar o quanto você é especial para mim.</p>
+        <a class="scroll" href="#tempo">↓ nossa história começa aqui</a>
+      </div>
+      <div class="wave"></div>
+    </section>
+
+    <section id="tempo">
+      <div class="eyebrow" style="text-align:center">desde 11 de julho de 2026</div>
+      <h2 class="section-title">Quanto tempo de nós? 💙</h2>
+      <p class="section-lead">E esse contador continua correndo enquanto a nossa história continua.</p>
+      <div class="counter">
+        <div class="unit"><span class="number" id="days">0</span><span class="label">dias</span></div>
+        <div class="unit"><span class="number" id="hours">0</span><span class="label">horas</span></div>
+        <div class="unit"><span class="number" id="minutes">0</span><span class="label">minutos</span></div>
+        <div class="unit"><span class="number" id="seconds">0</span><span class="label">segundos</span></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Um momento nosso 📸</h2>
+      <p class="section-lead">Porque algumas lembranças merecem um lugar especial.</p>
+      <div class="photo-card">
+        <img src="fotos/foto-1.jpg" alt="Nathalia e Samuel juntos">
+        <div class="caption">Um dos nossos momentos que eu quero guardar para sempre. 💙</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Nossa música 🎵</h2>
+      <div class="music">
+        <div class="vinyl" id="vinyl"></div>
+        <h3>Lendery lovers</h3>
+        <small>Trecho escolhido: 00:45 → 02:00</small>
+        <div style="margin:24px auto 0;max-width:620px;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px rgba(6,47,73,.14);background:#062f49">
+          <iframe
+            width="100%" height="315"
+            src="https://www.youtube.com/embed/BewrUtHF2Zc?start=45&end=120"
+            title="Lendery lovers — trecho escolhido"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <p id="music-note" style="margin:18px 0 0;color:#5f7887;font-size:14px">
+          É o trecho que você escolheu, de 45 segundos até 2 minutos.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Para você, Samuel 💌</h2>
+      <div class="letter">
+        <p>Desde o primeiro dia em que te vi, soube que minha vida jamais seria a mesma.</p>
+        <p>Cada momento ao seu lado é uma bênção, cada sorriso seu ilumina meu mundo. Você é meu porto seguro, minha paz e minha maior aventura.</p>
+        <p>Te amo mais do que as palavras podem expressar.</p>
+        <p style="text-align:right;margin-bottom:0">Com amor,<br><strong>Nathalia 💙</strong></p>
+      </div>
+    </section>
+
+    <section class="final">
+      <div class="heart">💙</div>
+      <h2>Que seja só o começo.</h2>
+      <p class="hero-sub">Eu escolheria você de novo.</p>
+      <p style="color:#78909c">Nathalia & Samuel • 11.07.2026</p>
+    </section>
+  </main>
+
+  <footer>Feito com carinho, para uma história que merece ser lembrada.</footer>
+
+  <script>
+    const start = new Date("2026-07-11T00:00:00");
+
+    function updateCounter(){
+      const now = new Date();
+      let diff = now - start;
+      if(diff < 0) diff = 0;
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / 86400);
+      const hours = Math.floor((totalSeconds % 86400) / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }
+    updateCounter();
+    setInterval(updateCounter,1000);
+
+    function openSite(){
+      document.getElementById("opening").classList.add("hidden");
+      window.scrollTo({top:0,behavior:"smooth"});
+      spawnHearts(10);
+    }
+
+    function spawnHearts(n=5){
+      const box=document.getElementById("hearts");
+      for(let i=0;i<n;i++){
+        const h=document.createElement("span");
+        h.className="heart-float";
+        h.textContent="♥";
+        h.style.left=(Math.random()*100)+"%";
+        h.style.fontSize=(12+Math.random()*20)+"px";
+        h.style.animationDuration=(5+Math.random()*5)+"s";
+        h.style.animationDelay=(Math.random()*1.5)+"s";
+        box.appendChild(h);
+        setTimeout(()=>h.remove(),11000);
+      }
+    }
+    setInterval(()=>spawnHearts(2),2200);
+
+  </script>
+</body>
+</html>
